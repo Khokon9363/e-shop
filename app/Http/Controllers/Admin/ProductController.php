@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,9 +13,12 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public $MODULE_VIEW = 'Admin.';
     public function index()
     {
-        //
+        $page = 'index';
+        $data = Product::paginate(1);
+        return view($this->MODULE_VIEW.'product', compact('page', 'data'));
     }
 
     /**

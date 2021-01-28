@@ -14,6 +14,9 @@ Route::group(['namespace' => 'Shop', ], function(){
 
 Route::group(['prefix' => '/admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin']], function(){
     Route::get('/dashboard', 'DashboardController@dashboard')->name('dashboard');
+    Route::resource('/slider', 'SliderController');
+    Route::resource('/category', 'CategoryController');
+    Route::resource('/product', 'ProductController');
 });
 Route::group(['prefix' => '/user', 'as' => 'user.', 'namespace' => 'User', 'middleware' => ['auth', 'user']], function(){
     Route::get('/dashboard', 'DashboardController@dashboard')->name('dashboard');

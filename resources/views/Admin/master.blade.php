@@ -34,17 +34,17 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.dashboard') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Slider</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.dashboard') }}">
+                <a class="nav-link" href="{{ route('admin.category.index') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Category</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.dashboard') }}">
+                <a class="nav-link" href="{{ route('admin.slider.index') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Slider</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.product.index') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Product</span></a>
             </li>
@@ -287,5 +287,10 @@
     <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
     <script src="{{ asset('admin/js/sb-admin-2.min.js') }}"></script>
+    <script type="text/javascript">
+        $(".alert").delay(3000).slideUp(200, function () {
+            $(this).alert('close');
+        });
+    </script>
 </body>
 </html>
