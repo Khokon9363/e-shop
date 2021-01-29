@@ -138,7 +138,7 @@
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
                                 <td><img src="{{ asset('slider_images/'.$slider->image) }}" style="height: 70px; width: auto;"></td>
-                                <td>{{ $slider->categories->name }}</td>
+                                <td>{{ $slider->category->name }}</td>
                                 <td>{{ $slider->text_one }}</td>
                                 <td>{{ $slider->text_two }}</td>
                                 <td>

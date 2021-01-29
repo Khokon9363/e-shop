@@ -21,7 +21,7 @@ class SliderController extends Controller
     public function index()
     {
         $page = 'index';
-        $data = Slider::with('categories')->orderBy('created_at', 'DESC')->paginate(1);
+        $data = Slider::with('category')->orderBy('created_at', 'DESC')->paginate(1);
         $categories = Category::all();
 
         return view($this->MODULE_VIEW.'slider', compact('page', 'data', 'categories'));
@@ -87,7 +87,7 @@ class SliderController extends Controller
     public function edit($id)
     {
         $page = 'edit';
-        $data = Slider::with('categories')->find($id);
+        $data = Slider::with('category')->find($id);
         $categories = Category::all();
 
         return view($this->MODULE_VIEW.'slider', compact('page', 'data', 'categories'));
