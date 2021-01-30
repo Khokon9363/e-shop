@@ -22,7 +22,7 @@ class ProductController extends Controller
     public function index()
     {
         $page = 'index';
-        $data = Product::with('category','productImages')->orderBy('created_at', 'DESC')->paginate(1);
+        $data = Product::with('category','productImages')->orderBy('created_at', 'DESC')->paginate(10);
         $categories = Category::all();
 
         return view($this->MODULE_VIEW.'product', compact('page', 'data', 'categories'));

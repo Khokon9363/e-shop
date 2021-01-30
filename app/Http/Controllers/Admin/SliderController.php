@@ -21,7 +21,7 @@ class SliderController extends Controller
     public function index()
     {
         $page = 'index';
-        $data = Slider::with('category')->orderBy('created_at', 'DESC')->paginate(1);
+        $data = Slider::with('category')->orderBy('created_at', 'DESC')->paginate(10);
         $categories = Category::all();
 
         return view($this->MODULE_VIEW.'slider', compact('page', 'data', 'categories'));

@@ -3,28 +3,54 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
+    public $categories;
+
+    public function __construct()
+    {
+        $this->categories = Category::with('product')->where('status','Active')->get();
+    }
+
     public function show()
     {
-        return view('shop.shop');
+        $categories = $this->categories;
+
+        $sliders = Slider::with('category')->where('status','Active')->get();
+
+        return view('shop.shop', compact('categories', 'sliders'));
     }
     public function about()
     {
-        return view('shop.about');
+        $categories = $this->categories;
+
+        return view('shop.about', compact('categories'));
     }
     public function contact()
     {
-        return view('shop.contact');
+        $categories = $this->categories;
+
+        return view('shop.contact', compact('categories'));
     }
-    public function product()
+    public function products($id)
     {
-        return view('shop.product');
+        $categories = $this->categories;
+
+        $products = Product::with('productImages')->where('category_id', $id)->where('status', 'Active')->get();
+
+        return view('shop.product.products', compact('categories', 'products'));
     }
-    public function single()
+    public function product($id)
     {   
-        return view('shop.single');
+        $categories = $this->categories;
+
+        $product = Product::with('productImages','category')->find($id);
+
+        return view('shop.product.product', compact('categories', 'product'));
     }
 }

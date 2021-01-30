@@ -85,41 +85,19 @@
 				<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 				  <ul class="nav navbar-nav menu__list">
 					<li class="active menu__item menu__item--current"><a class="menu__link" href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a></li>
+					@foreach($categories as $category)
 					<li class="menu__item dropdown">
-					   <a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">Men <b class="caret"></b></a>
-								<ul class="dropdown-menu agile_short_dropdown">
-									<li><a href="{{ url('/product') }}">Web Icons</a></li>
-									<li><a href="{{ url('/product') }}">Typography</a></li>
-								</ul>
+					    <a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown"> {{ $category->name }} <b class="caret"></b></a>
+						@if(count($category->product))
+					    <ul class="dropdown-menu agile_short_dropdown">
+							<li><a href="{{ url('/products/'.$category->id) }}">All of {{ $category->name }}</a></li>
+					    @foreach($category->product as $product)
+							<li><a href="{{ url('/product/'.$product->id) }}">{{ $product->name }}</a></li>
+						@endforeach
+					    </ul>
+						@endif
 					</li>
-					<li class="menu__item dropdown">
-					   <a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">Women <b class="caret"></b></a>
-								<ul class="dropdown-menu agile_short_dropdown">
-									<li><a href="{{ url('/product') }}">Web Icons</a></li>
-									<li><a href="{{ url('/product') }}">Typography</a></li>
-								</ul>
-					</li>
-					<li class="menu__item dropdown">
-					   <a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">Babies <b class="caret"></b></a>
-								<ul class="dropdown-menu agile_short_dropdown">
-									<li><a href="{{ url('/product') }}">Web Icons</a></li>
-									<li><a href="{{ url('/product') }}">Typography</a></li>
-								</ul>
-					</li>
-					<li class="menu__item dropdown">
-					   <a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">Bags <b class="caret"></b></a>
-								<ul class="dropdown-menu agile_short_dropdown">
-									<li><a href="{{ url('/product') }}">Web Icons</a></li>
-									<li><a href="{{ url('/product') }}">Typography</a></li>
-								</ul>
-					</li>
-					<li class="menu__item dropdown">
-					   <a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">Footwear <b class="caret"></b></a>
-								<ul class="dropdown-menu agile_short_dropdown">
-									<li><a href="{{ url('/product') }}">Web Icons</a></li>
-									<li><a href="{{ url('/product') }}">Typography</a></li>
-								</ul>
-					</li>
+					@endforeach
 					<li class=" menu__item"><a class="menu__link" href="{{ url('/contact') }}">Contact</a></li>
 					<li class=" menu__item"><a class="menu__link" href="{{ url('/about') }}">About</a></li>
 				  </ul>
